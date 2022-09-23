@@ -79,6 +79,13 @@ public class CalcadoSpecification {
                         )
                 );
             }
+            if (!ObjectUtils.isEmpty(filter.getDescricao())) {
+                predicateList.add(
+                        criteriaBuilder.like(
+                                criteriaBuilder.upper(root.get("descricao")), filter.getDescricao().toUpperCase().concat("%")
+                        )
+                );
+            }
 
             return criteriaBuilder.and(predicateList.toArray(Predicate[]::new));
         };
