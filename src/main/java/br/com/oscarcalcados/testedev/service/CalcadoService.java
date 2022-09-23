@@ -5,6 +5,7 @@ import br.com.oscarcalcados.testedev.model.Calcado;
 import br.com.oscarcalcados.testedev.repository.CalcadoRepository;
 import br.com.oscarcalcados.testedev.specification.CalcadoSpecification;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,13 @@ import java.util.Optional;
 public class CalcadoService {
 
     private CalcadoRepository calcadoRepository;
+    @Autowired
     private CalcadoSpecification calcadoSpecification;
+
+    @Autowired
+    public CalcadoService(CalcadoRepository calcadoRepository) {
+        this.calcadoRepository = calcadoRepository;
+    }
 
     public List<Calcado> findAll() {
         return calcadoRepository.findAll();
@@ -37,14 +44,14 @@ public class CalcadoService {
     }
 
     public Calcado update(Calcado calcadoUpdate, Long id) {
-        Calcado calcado = findById(id);
-        calcado.setNome(calcadoUpdate.getNome());
-        calcado.setMarca(calcadoUpdate.getMarca());
-        calcado.setCor(calcadoUpdate.getCor());
-        calcado.setTamanho(calcadoUpdate.getTamanho());
-        calcado.setPreco(calcadoUpdate.getPreco());
-        calcado.setQuantidadeEmEstoque(calcadoUpdate.getQuantidadeEmEstoque());
-        return calcadoRepository.save(calcado);
-
+        Optional<Calcado> calcado = calcadoRepository.findById(id);
+        if (calcado.isPresent()) {
+            calcadoUpdate.setId(calcado.get().getId());
+            return calcadoRepository.save(calcadoUpdate);
+        }
+        return calcadoRepository.save(calcadoUpdate);
+    }
+    public void deleteById(Long id) {
+        calcadoRepository.deleteById(id);
     }
 }

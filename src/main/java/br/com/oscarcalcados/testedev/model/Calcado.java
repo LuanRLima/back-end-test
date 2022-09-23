@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -18,24 +18,27 @@ public class Calcado {
     @Column(nullable = false)
     private Long id;
 
-    @Column(nullable = false)
-    private String nome;
-    @Column(nullable = false)
-    private String marca;
-    @Column(nullable = false)
-    private String cor;
-    @Column(nullable = false)
-    private String tamanho;
-    @Column(nullable = false)
-    private String preco;
-    @Column(name = "quantidade_estoque" ,nullable = false)
-    private String quantidadeEmEstoque;
-    @Column(nullable = false)
-    private String categoria;
-    @Column(nullable = false)
-    private LocalDateTime dataDeCadastro;
 
-    public Calcado(String nome, String marca, String cor, String tamanho, String preco, String quantidadeEmEstoque, String categoria) {
+    private String nome;
+
+    private String marca;
+
+    private String cor;
+
+    private String tamanho;
+
+    //TODO REFATORAR BigDecimal
+    private String preco;
+
+    private String quantidadeEmEstoque;
+
+    //TODO CRIAR ENUM
+    private String categoria;
+
+    private LocalDate dataDeCadastro;
+    private String descricao;
+
+    public Calcado(String nome, String marca, String cor, String tamanho, String preco, String quantidadeEmEstoque, String categoria, String descricao) {
         this.nome = nome;
         this.marca = marca;
         this.cor = cor;
@@ -43,11 +46,12 @@ public class Calcado {
         this.preco = preco;
         this.quantidadeEmEstoque = quantidadeEmEstoque;
         this.categoria = categoria;
+        this.descricao = descricao;
     }
 
     @PrePersist
     private void prePersist() {
-        this.dataDeCadastro = LocalDateTime.now();
+        this.dataDeCadastro = LocalDate.now();
     }
-
 }
+

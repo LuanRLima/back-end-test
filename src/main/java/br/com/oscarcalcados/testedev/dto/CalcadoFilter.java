@@ -17,6 +17,7 @@ public class CalcadoFilter {
     private String preco;
     private String quantidadeEmEstoque;
     private String categoria;
+    private String descricao;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataDeCadastroInicial;
