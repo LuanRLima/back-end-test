@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin("*")
 @RestController
 @AllArgsConstructor
-@RequestMapping("/calcados")
+@RequestMapping("/api/calcados")
 public class CalcadoResource {
 
     private CalcadoService calcadoService;
