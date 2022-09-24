@@ -46,18 +46,43 @@ public class CalcadoSpecification {
             }
             if (!ObjectUtils.isEmpty(filter.getPreco())) {
                 predicateList.add(
-                        criteriaBuilder.like(
-                                criteriaBuilder.upper(root.get("preco")), filter.getPreco().toUpperCase().concat("%")
+                        criteriaBuilder.equal(root.get("preco"), filter.getPreco())
+                );
+            }
+
+
+            if (!ObjectUtils.isEmpty(filter.getDataDeCadastroFinal())) {
+                predicateList.add(
+                        criteriaBuilder.lessThanOrEqualTo(
+                                root.get("dataDeCadastro"), filter.getDataDeCadastroFinal()
                         )
                 );
             }
+
+            if (!ObjectUtils.isEmpty(filter.getPrecoMin())) {
+                predicateList.add(
+                        criteriaBuilder.greaterThanOrEqualTo(root.get("preco"), filter.getPreco())
+                );
+            }
+
             if (!ObjectUtils.isEmpty(filter.getQuantidadeEmEstoque())) {
                 predicateList.add(
-                        criteriaBuilder.like(
-                                criteriaBuilder.upper(root.get("quantidadeEmEstoque")), filter.getQuantidadeEmEstoque().toUpperCase().concat("%")
-                        )
+                        criteriaBuilder.equal(root.get("quantidadeEmEstoque"), filter.getQuantidadeEmEstoque())
                 );
             }
+
+            if (!ObjectUtils.isEmpty(filter.getQuantidadeEmEstoqueMax())) {
+                predicateList.add(
+                        criteriaBuilder.lessThanOrEqualTo(root.get("quantidadeEmEstoque"), filter.getQuantidadeEmEstoque())
+                );
+            }
+
+            if (!ObjectUtils.isEmpty(filter.getQuantidadeEmEstoqueMin())) {
+                predicateList.add(
+                        criteriaBuilder.greaterThanOrEqualTo(root.get("quantidadeEmEstoque"), filter.getQuantidadeEmEstoque())
+                );
+            }
+
             if (!ObjectUtils.isEmpty(filter.getCategoria())) {
                 predicateList.add(
                         criteriaBuilder.like(
@@ -65,6 +90,7 @@ public class CalcadoSpecification {
                         )
                 );
             }
+
             if (!ObjectUtils.isEmpty(filter.getDataDeCadastroInicial())) {
                 predicateList.add(
                         criteriaBuilder.greaterThanOrEqualTo(

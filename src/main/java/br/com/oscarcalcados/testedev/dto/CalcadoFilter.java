@@ -14,8 +14,8 @@ public class CalcadoFilter {
     private String marca;
     private String cor;
     private String tamanho;
-    private String preco;
-    private String quantidadeEmEstoque;
+    private Double preco;
+    private Integer quantidadeEmEstoque;
     private String categoria;
     private String descricao;
 
@@ -24,4 +24,5 @@ public class CalcadoFilter {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataDeCadastroFinal;
+
 }

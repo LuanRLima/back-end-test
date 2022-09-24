@@ -28,9 +28,9 @@ public class Calcado {
     private String tamanho;
 
     //TODO REFATORAR BigDecimal
-    private String preco;
+    private Double preco;
 
-    private String quantidadeEmEstoque;
+    private Integer quantidadeEmEstoque;
 
     //TODO CRIAR ENUM
     private String categoria;
@@ -38,7 +38,7 @@ public class Calcado {
     private LocalDate dataDeCadastro;
     private String descricao;
 
-    public Calcado(String nome, String marca, String cor, String tamanho, String preco, String quantidadeEmEstoque, String categoria, String descricao) {
+    public Calcado(String nome, String marca, String cor, String tamanho, Double preco, Integer quantidadeEmEstoque, String categoria, String descricao) {
         this.nome = nome;
         this.marca = marca;
         this.cor = cor;
