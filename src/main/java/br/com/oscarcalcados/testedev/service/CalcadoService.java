@@ -27,7 +27,7 @@ public class CalcadoService {
     }
 
     public List<Calcado> findAll() {
-        return calcadoRepository.findAll();
+        return calcadoRepository.findAllByOrderByIdAsc();
     }
 
     public Calcado findById(Long id) {
@@ -35,8 +35,8 @@ public class CalcadoService {
         return calcado.orElse(null);
     }
 
-    public Page<Calcado> findAll(CalcadoFilter filter, Pageable pageable) {
-        return this.calcadoRepository.findAll(this.calcadoSpecification.calcados(filter), pageable);
+    public List<Calcado> findAll(CalcadoFilter filter) {
+        return this.calcadoRepository.findAll(this.calcadoSpecification.calcados(filter));
     }
 
     public Calcado save(Calcado calcado) {
@@ -44,12 +44,16 @@ public class CalcadoService {
     }
 
     public Calcado update(Calcado calcadoUpdate, Long id) {
-        Optional<Calcado> calcado = calcadoRepository.findById(id);
-        if (calcado.isPresent()) {
-            calcadoUpdate.setId(calcado.get().getId());
-            return calcadoRepository.save(calcadoUpdate);
+        Calcado calcado = findById(id);
+        if (calcado != null) {
+            calcado.setNome(calcadoUpdate.getNome());
+            calcado.setMarca(calcadoUpdate.getMarca());
+            calcado.setCor(calcadoUpdate.getCor());
+            calcado.setTamanho(calcadoUpdate.getTamanho());
+            calcado.setPreco(calcadoUpdate.getPreco());
+            calcadoRepository.save(calcado);
         }
-        return calcadoRepository.save(calcadoUpdate);
+        return calcado;
     }
     public void deleteById(Long id) {
         calcadoRepository.deleteById(id);

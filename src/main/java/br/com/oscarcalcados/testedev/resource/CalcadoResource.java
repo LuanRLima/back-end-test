@@ -26,8 +26,8 @@ public class CalcadoResource {
         return this.calcadoService.findAll();
     }
     @GetMapping("/filter")
-    public Page<Calcado> findAll(CalcadoFilter filter, Pageable pageable) {
-        return this.calcadoService.findAll(filter, pageable);
+    public List<Calcado> findAll(CalcadoFilter filter) {
+        return this.calcadoService.findAll(filter);
     }
     @GetMapping("/{id}")
     public Calcado findById(@PathVariable("id")Long id) {

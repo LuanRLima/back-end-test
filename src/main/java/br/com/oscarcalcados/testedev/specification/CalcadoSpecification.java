@@ -59,27 +59,9 @@ public class CalcadoSpecification {
                 );
             }
 
-            if (!ObjectUtils.isEmpty(filter.getPrecoMin())) {
-                predicateList.add(
-                        criteriaBuilder.greaterThanOrEqualTo(root.get("preco"), filter.getPreco())
-                );
-            }
-
             if (!ObjectUtils.isEmpty(filter.getQuantidadeEmEstoque())) {
                 predicateList.add(
                         criteriaBuilder.equal(root.get("quantidadeEmEstoque"), filter.getQuantidadeEmEstoque())
-                );
-            }
-
-            if (!ObjectUtils.isEmpty(filter.getQuantidadeEmEstoqueMax())) {
-                predicateList.add(
-                        criteriaBuilder.lessThanOrEqualTo(root.get("quantidadeEmEstoque"), filter.getQuantidadeEmEstoque())
-                );
-            }
-
-            if (!ObjectUtils.isEmpty(filter.getQuantidadeEmEstoqueMin())) {
-                predicateList.add(
-                        criteriaBuilder.greaterThanOrEqualTo(root.get("quantidadeEmEstoque"), filter.getQuantidadeEmEstoque())
                 );
             }
 
@@ -112,7 +94,7 @@ public class CalcadoSpecification {
                         )
                 );
             }
-
+            query.orderBy(criteriaBuilder.asc(root.get("id")));
             return criteriaBuilder.and(predicateList.toArray(Predicate[]::new));
         };
 
