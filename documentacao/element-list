@@ -1,0 +1,10 @@
+br.com.oscarcalcados.testedev
+br.com.oscarcalcados.testedev.config
+br.com.oscarcalcados.testedev.domain
+br.com.oscarcalcados.testedev.domain.dto
+br.com.oscarcalcados.testedev.repository
+br.com.oscarcalcados.testedev.resource
+br.com.oscarcalcados.testedev.resource.exception
+br.com.oscarcalcados.testedev.service
+br.com.oscarcalcados.testedev.service.execeptions
+br.com.oscarcalcados.testedev.specification
