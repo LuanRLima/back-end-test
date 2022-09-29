@@ -7,6 +7,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
+/**
+ * Classe DTO para filtro de busca de calçados
+ *
+ */
 @Getter
 @Setter
 public class CalcadoFilter {

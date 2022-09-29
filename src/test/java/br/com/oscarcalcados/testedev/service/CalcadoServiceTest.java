@@ -22,9 +22,19 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 
+/**
+ * Classe responsável por testar os métodos da classe CalcadoService
+ *
+ * @author Luan Rodrigues
+ * @version 1.0
+ * @since 2021-05-10
+ */
 @SpringBootTest
 class CalcadoServiceTest {
 
+    /**
+     * Objeto statico responsável por simular o objeto CalcadoRepository
+     */
     public static final Long ID = 1L;
     public static final String NOME = "Tênis";
     public static final String MARCA = "Nike";
@@ -34,23 +44,41 @@ class CalcadoServiceTest {
     public static final int QUANTIDADE_EM_ESTOQUE = 10;
     public static final Categoria CATEGORIA = TENIS;
     public static final String DESCRICAO = "Tênis Nike";
+
+    /**
+     * service responsável por testar os métodos da classe CalcadoService
+     */
     @InjectMocks
     private CalcadoService calcadoService;
 
+    /**
+     * Repositório responsável por testar os métodos da classe CalcadoService
+     */
     @Mock
     private CalcadoRepository calcadoRepository;
 
-
+    /**
+     * Modelo responsável por testar os métodos da classe CalcadoService
+     */
     private Calcado calcado;
 
+    /**
+     * Optional Calcado responsável por testar os métodos da classe CalcadoService
+     */
     private Optional<Calcado> optionalCalcado;
 
+    /**
+     * Método responsável por inicializar os objetos
+     */
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
         startCalcado();
     }
 
+    /**
+     * Teste responsável por testar o método de buscar por id e retornar um objeto Calcado
+     */
     @Test
     void whenFindByIdWhenReturnAnCalcado() {
         when(calcadoRepository.findById(anyLong())).thenReturn(optionalCalcado);
@@ -68,6 +96,9 @@ class CalcadoServiceTest {
         assertEquals(DESCRICAO, response.getDescricao());
     }
 
+    /**
+     * Teste responsável por testar o método de buscar por id e retornar um exception
+     */
     @Test
     void whenFindByIdWhenReturnAnObejctNotFoundExcption() {
         when(calcadoRepository.findById(anyLong())).thenThrow(new ObjectNotFoundException("Calcado não encontrado"));
@@ -80,6 +111,9 @@ class CalcadoServiceTest {
         }
     }
 
+    /**
+     * Teste responsável por testar o método de buscar todos os objetos Calcado
+     */
     @Test
     void whenFindAllWhenReturnAnListCalcados() {
 
@@ -89,7 +123,9 @@ class CalcadoServiceTest {
         assertNotNull(response);
 
     }
-
+    /**
+     * Teste responsável por testar o método de salvar um objeto Calcado
+     */
     @Test
     void whenCreateThenResturnSuccess() {
         when(calcadoRepository.save(any())).thenReturn(calcado);
@@ -108,7 +144,9 @@ class CalcadoServiceTest {
         assertEquals(DESCRICAO, response.getDescricao());
     }
 
-
+    /**
+     * Teste responsável por testar o método de deletar um objeto Calcado
+     */
     @Test
     void whenDeleteThenResturnSuccess() {
         when(calcadoRepository.findById(anyLong())).thenReturn(optionalCalcado);
@@ -117,6 +155,9 @@ class CalcadoServiceTest {
         verify(calcadoRepository, times(1)).deleteById(anyLong());
 
     }
+    /**
+     * Teste responsável por testar o método de deletar um objeto Calcado e retornar um exception
+     */
 
     @Test
     void whenDeleteThenResturnObjectNotFoundException() {
@@ -128,6 +169,10 @@ class CalcadoServiceTest {
             assertEquals("Calcado não encontrado", e.getMessage());
         }
     }
+
+    /**
+     * Método responsável por inicializar o objeto Calcado
+     */
         private void startCalcado () {
             calcado = new Calcado(ID, NOME, MARCA, COR, TAMANHO, PRECO, QUANTIDADE_EM_ESTOQUE, CATEGORIA, DESCRICAO);
             optionalCalcado = Optional.of(calcado);

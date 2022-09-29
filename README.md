@@ -76,9 +76,8 @@ Obs. Colocar print para exemplificar as telas de editar/cadastrar e listar
 
 
 
-## Acesso ao projeto
+## projeto bakc-end
 
-Você pode [acessar os códigos fontes do desafio](https://github.com/LuanRLima/capgemini-academia-desafio-programacao/tree/master)
 
 ### Clonando o projeto
 
@@ -86,7 +85,7 @@ Abra `Terminal`.
 
 Altere o diretório de trabalho `atual` para o local em que deseja ter o `diretório clonado`.
 
-Digite `git clone git@github.com:LuanRLima/capgemini-academia-desafio-programacao.git`.
+Digite `git clone ghttps://github.com/LuanRLima/teste-dev`.
 
 [Tutorial como clonar um repositório](https://docs.github.com/pt/repositories/creating-and-managing-repositories/cloning-a-repository).
 
@@ -107,9 +106,4 @@ Após baixar o projeto, você pode abrir com o IDE favorita [IntelliJ](https://w
 - Procure o local onde o projeto está e o selecione a pasta questao_03 (Caso o projeto seja baixado via zip, é necessário extraí-lo antes de procurá-lo) por fim clique em `OK`.
 - O [IntelliJ](https://www.jetbrains.com/pt-br/idea) deve executar algumas tasks do [maven](https://maven.apache.org) para configurar o projeto e baixar as dependências necessárias, aguarde até finalizar. Ao finalizar as tasks, você pode executar o App 🏆
 
-### [Eclipse](https://www.eclipse.org/downloads)
-No [Eclipse](https://www.eclipse.org/downloads) você clica em `File` e depois `import`.
-- Procure por `maven`, escolhe `Existing Maven Projects`, clica em `next` e procure o local onde o projeto está e o selecione (Caso o projeto seja baixado via zip, é necessário extraí-lo antes de procurá-lo);
-- Selecione só a questão_03 `finish`.
-- Por fim clique com o botão direito sobre o projeto questao_03 vá em `mavem` e clique em `update project` ou `alt` + `f5`.
-- O [Eclipse](https://www.eclipse.org/downloads) deve executar algumas tasks do [maven](https://maven.apache.org) para configurar o projeto e baixar as dependências necessárias, aguarde até finalizar. Ao finalizar as tasks, você pode executar o App do desafio🏆
+

@@ -6,6 +6,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.time.LocalDate;
 
+/**
+ * Classe para o objeto Calcado
+ *
+ */
 @Data
 @Entity
 @Builder

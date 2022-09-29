@@ -6,7 +6,11 @@ import lombok.Setter;
 
 
 import java.time.LocalDateTime;
-
+/**
+ * Classe personalizada para erros
+ * @author Luan Rodrigues
+ * @since 1.0 (10/09/2020)
+ */
 @Getter
 @Setter
 @AllArgsConstructor

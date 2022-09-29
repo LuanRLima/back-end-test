@@ -5,6 +5,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Classe DTO para o objeto Calcado
+ *
+ * @author Luan Rodrigues
+ * @since 1.0 (10/09/2020)
+ */
 @Setter
 @Getter
 @NoArgsConstructor
