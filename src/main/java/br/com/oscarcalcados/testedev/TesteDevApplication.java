@@ -16,13 +16,13 @@ public class TesteDevApplication {
         SpringApplication.run(TesteDevApplication.class, args);
     }
 
-    @Bean
-    CommandLineRunner initDatabase(CalcadoRepository calcadoRepository) {
-        return args -> {
-            calcadoRepository.save(new Calcado("Tênis", "Nike", "Preto", "40", 100.00, 1, TENIS, "tenis nike preto"));
-            calcadoRepository.save(new Calcado("Tênis", "Adidas", "Branco", "41", 130.00, 1, TENIS, "tenis adidas branco"));
-            calcadoRepository.save(new Calcado("Tênis", "Nike", "Branco", "42", 113.00, 1, TENIS, "tenis nike branco"));
-            calcadoRepository.save(new Calcado("Tênis", "Adidas", "Preto", "42", 130.00, 1, TENIS, "tenis adidas preto"));
-        };
-    }
+//    @Bean
+//    CommandLineRunner initDatabase(CalcadoRepository calcadoRepository) {
+//        return args -> {
+//            calcadoRepository.save(new Calcado("Tênis", "Nike", "Preto", "40", 100.00, 1, TENIS, "tenis nike preto"));
+//            calcadoRepository.save(new Calcado("Tênis", "Adidas", "Branco", "41", 130.00, 1, TENIS, "tenis adidas branco"));
+//            calcadoRepository.save(new Calcado("Tênis", "Nike", "Branco", "42", 113.00, 1, TENIS, "tenis nike branco"));
+//            calcadoRepository.save(new Calcado("Tênis", "Adidas", "Preto", "42", 130.00, 1, TENIS, "tenis adidas preto"));
+//        };
+//    }
 }

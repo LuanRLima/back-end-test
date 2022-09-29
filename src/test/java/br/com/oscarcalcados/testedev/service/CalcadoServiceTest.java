@@ -11,12 +11,16 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import static br.com.oscarcalcados.testedev.domain.Categoria.TENIS;
+
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 class CalcadoServiceTest {
@@ -36,7 +40,9 @@ class CalcadoServiceTest {
     @Mock
     private CalcadoRepository calcadoRepository;
 
+
     private Calcado calcado;
+
     private Optional<Calcado> optionalCalcado;
 
     @BeforeEach
@@ -63,56 +69,68 @@ class CalcadoServiceTest {
     }
 
     @Test
-    void whenFindByIdWhenReturnAnObejctNotFoundExcption(){
-        when(calcadoRepository.findById(anyLong())).thenThrow( new ObjectNotFoundException("Calcado não encontrado"));
+    void whenFindByIdWhenReturnAnObejctNotFoundExcption() {
+        when(calcadoRepository.findById(anyLong())).thenThrow(new ObjectNotFoundException("Calcado não encontrado"));
 
         try {
             calcadoService.findById(ID);
         } catch (ObjectNotFoundException e) {
             assertEquals(ObjectNotFoundException.class, e.getClass());
-            System.out.println(e.getMessage());
             assertEquals("Calcado não encontrado", e.getMessage());
         }
     }
 
-
-//    @Test
-//    void whenFindAllWhenReturnAnCalcado() {
-//        when(calcadoRepository.findAll()).thenReturn(calcadoService.findAll());
-//        assertNotNull(response);
-//        assertEquals(Calcado.class, response.getClass());
-//        assertEquals(ID, response.getId());
-//        assertEquals(NOME, response.getNome());
-//        assertEquals(MARCA, response.getMarca());
-//        assertEquals(COR, response.getCor());
-//        assertEquals(TAMANHO, response.getTamanho());
-//        assertEquals(PRECO, response.getPreco());
-//        assertEquals(QUANTIDADE_EM_ESTOQUE, response.getQuantidadeEmEstoque());
-//        assertEquals(CATEGORIA, response.getCategoria());
-//        assertEquals(DESCRICAO, response.getDescricao());
-//    }
-
-
-
     @Test
-    void findAllWithFilter() {
+    void whenFindAllWhenReturnAnListCalcados() {
+
+        when(calcadoRepository.findAll()).thenReturn(List.of(calcado));
+
+        List<Calcado> response = calcadoService.findAll();
+        assertNotNull(response);
+
     }
 
     @Test
-    void save() {
+    void whenCreateThenResturnSuccess() {
+        when(calcadoRepository.save(any())).thenReturn(calcado);
+
+        Calcado response = calcadoService.save(calcado);
+        assertNotNull(response);
+        assertEquals(Calcado.class, response.getClass());
+        assertEquals(ID, response.getId());
+        assertEquals(NOME, response.getNome());
+        assertEquals(MARCA, response.getMarca());
+        assertEquals(COR, response.getCor());
+        assertEquals(TAMANHO, response.getTamanho());
+        assertEquals(PRECO, response.getPreco());
+        assertEquals(QUANTIDADE_EM_ESTOQUE, response.getQuantidadeEmEstoque());
+        assertEquals(CATEGORIA, response.getCategoria());
+        assertEquals(DESCRICAO, response.getDescricao());
+    }
+
+
+    @Test
+    void whenDeleteThenResturnSuccess() {
+        when(calcadoRepository.findById(anyLong())).thenReturn(optionalCalcado);
+        doNothing().when(calcadoRepository).deleteById(anyLong());
+        calcadoService.deleteById(ID);
+        verify(calcadoRepository, times(1)).deleteById(anyLong());
+
     }
 
     @Test
-    void update() {
+    void whenDeleteThenResturnObjectNotFoundException() {
+        when(calcadoRepository.findById(anyLong())).thenThrow(new ObjectNotFoundException("Calcado não encontrado"));
+    try {
+            calcadoService.deleteById(ID);
+        } catch (ObjectNotFoundException e) {
+            assertEquals(ObjectNotFoundException.class, e.getClass());
+            assertEquals("Calcado não encontrado", e.getMessage());
+        }
     }
-
-    @Test
-    void deleteById() {
-    }
-
-    private void startCalcado() {
-        calcado = new Calcado(ID ,NOME, MARCA, COR, TAMANHO, PRECO, QUANTIDADE_EM_ESTOQUE, CATEGORIA, DESCRICAO);
-        optionalCalcado = Optional.of(calcado);
+        private void startCalcado () {
+            calcado = new Calcado(ID, NOME, MARCA, COR, TAMANHO, PRECO, QUANTIDADE_EM_ESTOQUE, CATEGORIA, DESCRICAO);
+            optionalCalcado = Optional.of(calcado);
 
     }
 }

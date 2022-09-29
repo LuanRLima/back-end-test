@@ -1,6 +1,8 @@
 package br.com.oscarcalcados.testedev.resource;
 
 import br.com.oscarcalcados.testedev.domain.Calcado;
+import br.com.oscarcalcados.testedev.resource.exception.StandardError;
+import br.com.oscarcalcados.testedev.service.execeptions.ObjectNotFoundException;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,6 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import io.restassured.RestAssured;
+import org.springframework.http.ResponseEntity;
+import org.springframework.mock.web.MockHttpServletRequest;
 
 import static br.com.oscarcalcados.testedev.domain.Categoria.TENIS;
 
@@ -49,7 +53,7 @@ class CalcadoResourceTest extends AbstractContainerBase {
                 .when()
                 .get("/api/calcados/1")
                 .then()
-                .statusCode(HttpStatus.OK.value());
+                .extract().response().prettyPrint();
     }
 
 
@@ -87,4 +91,6 @@ class CalcadoResourceTest extends AbstractContainerBase {
                 .then()
                 .statusCode(HttpStatus.NO_CONTENT.value());
     }
+
+
 }

@@ -4,6 +4,7 @@ import br.com.oscarcalcados.testedev.domain.dto.CalcadoDTO;
 import br.com.oscarcalcados.testedev.domain.dto.CalcadoFilter;
 import br.com.oscarcalcados.testedev.domain.Calcado;
 import br.com.oscarcalcados.testedev.repository.CalcadoRepository;
+import br.com.oscarcalcados.testedev.service.execeptions.ObjectNotFoundException;
 import br.com.oscarcalcados.testedev.specification.CalcadoSpecification;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class CalcadoService {
 
     public Calcado findById(Long id) {
         Optional<Calcado> calcado = calcadoRepository.findById(id);
-        return calcado.orElse(null);
+        return calcado.orElseThrow(() -> new ObjectNotFoundException("Calcado não encontrado! Id: " + id + ", Tipo: " + Calcado.class.getName()));
     }
 
     public List<Calcado> findAllWithFilter(CalcadoFilter filter) {
@@ -45,15 +46,16 @@ public class CalcadoService {
 
     public Calcado update(Calcado calcadoUpdate, Long id) {
         Calcado calcado = findById(id);
-        if (calcado != null) {
-            calcado.setNome(calcadoUpdate.getNome());
-            calcado.setMarca(calcadoUpdate.getMarca());
-            calcado.setCor(calcadoUpdate.getCor());
-            calcado.setTamanho(calcadoUpdate.getTamanho());
-            calcado.setPreco(calcadoUpdate.getPreco());
-            calcadoRepository.save(calcado);
-        }
-        return calcado;
+        System.out.println(calcado);
+        calcado.setNome(calcadoUpdate.getNome());
+        calcado.setMarca(calcadoUpdate.getMarca());
+        calcado.setCor(calcadoUpdate.getCor());
+        calcado.setTamanho(calcadoUpdate.getTamanho());
+        calcado.setPreco(calcadoUpdate.getPreco());
+        calcado.setQuantidadeEmEstoque(calcadoUpdate.getQuantidadeEmEstoque());
+        calcado.setCategoria(calcadoUpdate.getCategoria());
+        calcado.setDescricao(calcadoUpdate.getDescricao());
+        return calcadoRepository.save(calcado);
     }
     public void deleteById(Long id) {
         calcadoRepository.deleteById(id);
