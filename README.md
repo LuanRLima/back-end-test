@@ -95,7 +95,23 @@ Você pode acessar a documentação do projeto questao_03 do desafio, procure a 
 
 É necessário ter o docker instalado na sua máquina, caso não tenha, siga o tutorial [aqui](https://docs.docker.com/get-docker/).
 
-docker run --name postgres -p 5434:5432 -e POSTGRES_DB=postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=123 -d postgres
+```docker
+docker run --name postgres -p 5434:5432 -e POSTGRES_DB=postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=123456 -d postgres
+```
+script para criar o banco de dados
+```postgresql
+create table calcados (id bigserial not null,
+categoria varchar(255) not null,
+cor varchar(255) not null,
+data_de_cadastro date,
+descricao varchar(255) not null,
+marca varchar(255) not null,
+nome varchar(255) not null,
+preco float8 not null,
+quantidade_em_estoque int4 not null,
+tamanho varchar(255) not null,
+primary key (id))
+```
 
 ## Abrir e rodar o projeto
 
