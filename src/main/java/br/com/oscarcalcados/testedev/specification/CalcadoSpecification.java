@@ -1,7 +1,7 @@
 package br.com.oscarcalcados.testedev.specification;
 
-import br.com.oscarcalcados.testedev.dto.CalcadoFilter;
-import br.com.oscarcalcados.testedev.model.Calcado;
+import br.com.oscarcalcados.testedev.domain.dto.CalcadoFilter;
+import br.com.oscarcalcados.testedev.domain.Calcado;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
@@ -67,9 +67,7 @@ public class CalcadoSpecification {
 
             if (!ObjectUtils.isEmpty(filter.getCategoria())) {
                 predicateList.add(
-                        criteriaBuilder.like(
-                                criteriaBuilder.upper(root.get("categoria")), filter.getCategoria().toUpperCase().concat("%")
-                        )
+                        criteriaBuilder.equal(root.get("categoria"), filter.getCategoria())
                 );
             }
 

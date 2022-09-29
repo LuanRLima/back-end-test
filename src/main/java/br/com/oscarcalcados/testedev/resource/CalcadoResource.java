@@ -1,17 +1,19 @@
 package br.com.oscarcalcados.testedev.resource;
 
-import br.com.oscarcalcados.testedev.dto.CalcadoFilter;
-import br.com.oscarcalcados.testedev.model.Calcado;
+import br.com.oscarcalcados.testedev.domain.dto.CalcadoDTO;
+import br.com.oscarcalcados.testedev.domain.dto.CalcadoFilter;
+import br.com.oscarcalcados.testedev.domain.Calcado;
 import br.com.oscarcalcados.testedev.service.CalcadoService;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @CrossOrigin("*")
 @RestController
@@ -19,19 +21,26 @@ import java.util.Optional;
 @RequestMapping("/api/calcados")
 public class CalcadoResource {
 
+    @Autowired
+    private ModelMapper mapper;
     private CalcadoService calcadoService;
 
     @GetMapping
-    public List<Calcado> findAll() {
-        return this.calcadoService.findAll();
+    public ResponseEntity<List<CalcadoDTO>> findAll() {
+        return ResponseEntity.ok().body(
+                calcadoService.findAll()
+                        .stream().map(x -> mapper.map(x, CalcadoDTO.class)).collect(Collectors.toList())
+        );
+
+
     }
     @GetMapping("/filter")
     public List<Calcado> findAll(CalcadoFilter filter) {
-        return this.calcadoService.findAll(filter);
+        return this.calcadoService.findAllWithFilter(filter);
     }
     @GetMapping("/{id}")
-    public Calcado findById(@PathVariable("id")Long id) {
-        return this.calcadoService.findById(id);
+    public ResponseEntity<CalcadoDTO> findById(@PathVariable("id")Long id) {
+            return ResponseEntity.ok().body(mapper.map(calcadoService.findById(id), CalcadoDTO.class));
     }
     @PutMapping("/{id}")
     public ResponseEntity<Calcado> update(@PathVariable("id")Long id, @RequestBody Optional<Calcado> calcado) {

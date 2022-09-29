@@ -1,13 +1,12 @@
 package br.com.oscarcalcados.testedev.service;
 
-import br.com.oscarcalcados.testedev.dto.CalcadoFilter;
-import br.com.oscarcalcados.testedev.model.Calcado;
+import br.com.oscarcalcados.testedev.domain.dto.CalcadoDTO;
+import br.com.oscarcalcados.testedev.domain.dto.CalcadoFilter;
+import br.com.oscarcalcados.testedev.domain.Calcado;
 import br.com.oscarcalcados.testedev.repository.CalcadoRepository;
 import br.com.oscarcalcados.testedev.specification.CalcadoSpecification;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +16,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class CalcadoService {
 
+    @Autowired
     private CalcadoRepository calcadoRepository;
     @Autowired
     private CalcadoSpecification calcadoSpecification;
@@ -35,7 +35,7 @@ public class CalcadoService {
         return calcado.orElse(null);
     }
 
-    public List<Calcado> findAll(CalcadoFilter filter) {
+    public List<Calcado> findAllWithFilter(CalcadoFilter filter) {
         return this.calcadoRepository.findAll(this.calcadoSpecification.calcados(filter));
     }
 

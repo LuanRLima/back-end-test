@@ -1,17 +1,17 @@
-package br.com.oscarcalcados.testedev.model;
+package br.com.oscarcalcados.testedev.domain;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
-@Getter
-@Setter
+@Data
 @Entity
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @Table(name = "calcados")
 public class Calcado {
     @Id
@@ -34,14 +34,28 @@ public class Calcado {
     @Column(nullable = false)
     private Integer quantidadeEmEstoque;
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     //TODO CRIAR ENUM
-    private String categoria;
+    private Categoria categoria;
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataDeCadastro;
     @Column(nullable = false)
     private String descricao;
 
-    public Calcado(String nome, String marca, String cor, String tamanho, Double preco, Integer quantidadeEmEstoque, String categoria, String descricao) {
+    public Calcado(String nome, String marca, String cor, String tamanho, Double preco, Integer quantidadeEmEstoque, Categoria categoria, String descricao) {
+        this.nome = nome;
+        this.marca = marca;
+        this.cor = cor;
+        this.tamanho = tamanho;
+        this.preco = preco;
+        this.quantidadeEmEstoque = quantidadeEmEstoque;
+        this.categoria = categoria;
+        this.descricao = descricao;
+    }
+
+    public Calcado(Long id, String nome, String marca, String cor, String tamanho, Double preco, Integer quantidadeEmEstoque, Categoria categoria, String descricao) {
+
+        this.id = id;
         this.nome = nome;
         this.marca = marca;
         this.cor = cor;
@@ -56,5 +70,7 @@ public class Calcado {
     private void prePersist() {
         this.dataDeCadastro = LocalDate.now();
     }
+
+
 }
 

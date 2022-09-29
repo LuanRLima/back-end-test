@@ -1,5 +1,6 @@
-package br.com.oscarcalcados.testedev.dto;
+package br.com.oscarcalcados.testedev.domain.dto;
 
+import br.com.oscarcalcados.testedev.domain.Categoria;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -16,7 +17,7 @@ public class CalcadoFilter {
     private String tamanho;
     private Double preco;
     private Integer quantidadeEmEstoque;
-    private String categoria;
+    private Categoria categoria;
     private String descricao;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
