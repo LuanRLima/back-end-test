@@ -1,4 +1,4 @@
-<h1 align="center"> QUESTÃO 03 - DESAFIO DE PROGRAMAÇÃO </h1>
+<h1 align="center"> QUESTÃO 02 - DESAFIO DE PROGRAMAÇÃO </h1>
 <p align="center">
 <img src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge"/>
 </p>
@@ -83,7 +83,7 @@ Abra `Terminal`.
 
 Altere o diretório de trabalho `atual` para o local em que deseja ter o `diretório clonado`.
 
-Digite `git clone ghttps://github.com/LuanRLima/teste-dev`.
+Digite `git clone https://github.com/LuanRLima/teste-dev`.
 
 [Tutorial como clonar um repositório](https://docs.github.com/pt/repositories/creating-and-managing-repositories/cloning-a-repository).
 
