@@ -83,7 +83,7 @@ Abra `Terminal`.
 
 Altere o diretório de trabalho `atual` para o local em que deseja ter o `diretório clonado`.
 
-Digite `git clone ghttps://github.com/LuanRLima/teste-dev`.
+Digite `git clone https://github.com/LuanRLima/teste-dev`.
 
 [Tutorial como clonar um repositório](https://docs.github.com/pt/repositories/creating-and-managing-repositories/cloning-a-repository).
 
