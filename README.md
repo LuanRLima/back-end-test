@@ -57,7 +57,7 @@ cadastro e descrição, os filtros podem ser combinados;
 envio dos arquivos deve ser via e-mail ou um link do repositório no GitHub. 
 
 Obs. Colocar print para exemplificar as telas de editar/cadastrar e listar
-## Ferramentas utilizadas
+## Ferramentas utilizadas no projeto Back-end
 
 <h3><a href="https://www.java.com"> Java - 11</a></h3>
 <h3><a href="https://junit.org/junit5"> Junit - 5</a></h3>
@@ -72,11 +72,7 @@ Obs. Colocar print para exemplificar as telas de editar/cadastrar e listar
 <h3><a href="https://www.postgresql.org/"> PostgreSQL</a></h3>
 <h3><a href="https://docs.oracle.com/javase/8/docs/technotes/tools/windows/javadoc.html"> Java Doc</a></h3>
 <h3><a href="https://swagger.io/"> Swagger </a></h3>
-<h3><a href="https://www.java.com"> Angular</a></h3>
-<h3><a href="https://www.java.com"> Angular Material</a></h3>
-
-
-
+<h3><a href="https://www.docker.com/"> Docker </a></h3>
 
 ## projeto bakc-end
 
