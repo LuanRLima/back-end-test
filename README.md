@@ -95,6 +95,12 @@ Digite `git clone ghttps://github.com/LuanRLima/teste-dev`.
 
 Você pode acessar a documentação do projeto questao_03 do desafio, procure a pasta onde a projeto questão_03 estar, entre na pasta do `questao_03`, vá à pasta `doc` entre nela e abra o seu navegador o arquivo `index.html`. (Caso o projeto seja baixado via zip, é necessário extraí-lo antes de procurá-lo)
 
+## Como subir um container do banco de dados postgresql
+
+É necessário ter o docker instalado na sua máquina, caso não tenha, siga o tutorial [aqui](https://docs.docker.com/get-docker/).
+
+docker run --name postgres -p 5434:5432 -e POSTGRES_DB=postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=123 -d postgres
+
 ## Abrir e rodar o projeto
 
 ### Pré-requisitos
@@ -112,3 +118,6 @@ Após baixar o projeto, você pode abrir com o IDE favorita [IntelliJ](https://w
 Segue o link para acessar a documentação da API via swagger:
 - [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
+### Documentação da API via JavaDoc
+Segue o link para acessar a documentação da API via JavaDoc:
+- [https://luanrlima.github.io/teste-documentation-back-end/](https://luanrlima.github.io/teste-documentation-back-end/)
