@@ -60,16 +60,18 @@ Obs. Colocar print para exemplificar as telas de editar/cadastrar e listar
 ## Ferramentas utilizadas
 
 <h3><a href="https://www.java.com"> Java - 11</a></h3>
-<h3><a href="https://www.java.com"> Junit - 5</a></h3>
-<h3><a href="https://www.java.com"> Maven</a></h3>
-<h3><a href="https://www.java.com"> Mockito </a></h3>
-<h3><a href="https://www.java.com"> TestContainers </a></h3>
-<h3><a href="https://www.java.com"> Modelmapper</a></h3>
-<h3><a href="https://rest-assured.io"> Restassured</a></h3>
-<h3><a href="https://www.java.com"> Spring boot </a></h3>
-<h3><a href="https://www.java.com"> Spring data jpa</a></h3>
-<h3><a href="https://www.java.com"> Spring web</a></h3>
-<h3><a href="https://www.java.com"> PostgreSQL</a></h3>
+<h3><a href="https://junit.org/junit5"> Junit - 5</a></h3>
+<h3><a href="https://maven.apache.org"> Maven</a></h3>
+<h3><a href="https://site.mockito.org"> Mockito </a></h3>
+<h3><a href="https://www.testcontainers.org"> TestContainers </a></h3>
+<h3><a href="http://modelmapper.org"> Modelmapper</a></h3>
+<h3><a href="https://rest-assured.io"> Rest-Assured</a></h3>
+<h3><a href="https://spring.io/projects/spring-boot"> Spring boot </a></h3>
+<h3><a href="https://spring.io/projects/spring-data-jpa"> Spring data jpa</a></h3>
+<h3><a href="https://spring.io/projects/spring-ws"> Spring web</a></h3>
+<h3><a href="https://www.postgresql.org/"> PostgreSQL</a></h3>
+<h3><a href="https://docs.oracle.com/javase/8/docs/technotes/tools/windows/javadoc.html"> Java Doc</a></h3>
+<h3><a href="https://swagger.io/"> Swagger </a></h3>
 <h3><a href="https://www.java.com"> Angular</a></h3>
 <h3><a href="https://www.java.com"> Angular Material</a></h3>
 
@@ -103,7 +105,10 @@ Após baixar o projeto, você pode abrir com o IDE favorita [IntelliJ](https://w
 
 ### [IntelliJ](https://www.jetbrains.com/pt-br/idea)
 - No [IntelliJ](https://www.jetbrains.com/pt-br/idea) você clica em `File` e depois `open`.
-- Procure o local onde o projeto está e o selecione a pasta questao_03 (Caso o projeto seja baixado via zip, é necessário extraí-lo antes de procurá-lo) por fim clique em `OK`.
+- Procure o local onde o projeto está e o selecione a pasta (Caso o projeto seja baixado via zip, é necessário extraí-lo antes de procurá-lo) por fim clique em `OK`.
 - O [IntelliJ](https://www.jetbrains.com/pt-br/idea) deve executar algumas tasks do [maven](https://maven.apache.org) para configurar o projeto e baixar as dependências necessárias, aguarde até finalizar. Ao finalizar as tasks, você pode executar o App 🏆
 
+### Swagger
+Segue o link para acessar a documentação da API via swagger:
+- [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
